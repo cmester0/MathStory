@@ -1,0 +1,7 @@
+display 30 30 display
+move up
+move right
+move up
+move left
+display 30 30 display1
+

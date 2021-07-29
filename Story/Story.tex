@@ -1,0 +1,176 @@
+\documentclass[11pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage{fullpage}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\usepackage{xcolor} % http://ctan.org/pkg/xcolor
+\usepackage{rotating}
+
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+\usepackage{todonotes}
+
+\usepackage{forest}
+
+\usepackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
+
+\author{Lasse Letager Hansen (201508114)}
+\date{\today}
+\title{Math Story}
+
+\usepackage{proof}
+\usepackage{amsthm}
+
+\theoremstyle{plain} % default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{axiom}[thm]{Axiom}% [section]
+\newtheorem{defn}[thm]{Definition}% [section]
+\newtheorem{st}[thm]{Story}% [section] 
+\newtheorem{conj}{Conjecture}[section]
+\newtheorem{exmp}{Example} % [section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
+
+% Custom commands
+
+\newcommand*{\thmref}[1]{\hyperref[thm:#1]{Theorem~\ref*{thm:#1}}} % Theorem~\ref
+\newcommand*{\lemref}[1]{\hyperref[lem:#1]{Lemma~\ref*{lem:#1}}}
+\newcommand*{\corref}[1]{\hyperref[cor:#1]{Corollary~\ref*{cor:#1}}}
+\newcommand*{\defref}[1]{\hyperref[defn:#1]{Definition~\ref*{defn:#1}}}
+\newcommand*{\figref}[1]{\hyperref[fig:#1]{Figure~\ref*{fig:#1}}}
+\newcommand*{\tableref}[1]{\hyperref[table:#1]{Table~\ref*{table:#1}}}
+\newcommand*{\exmpref}[1]{\hyperref[exmp:#1]{Example~\ref*{exmp:#1}}}
+\newcommand*{\sectionref}[1]{\hyperref[sec:#1]{Section~\ref*{sec:#1}}}
+\newcommand*{\subsectionref}[1]{\hyperref[sec:#1]{Subsection~\ref*{sec:#1}}}
+\newcommand*{\chapterref}[1]{\hyperref[ch:#1]{Chapter~\ref*{ch:#1}}}
+
+
+\newcommand{\set}[1]{\{#1\}}
+
+\begin{document}
+
+\maketitle
+
+\section{TODO}
+\paragraph{Theorem List}
+\begin{itemize}
+\item Pythagoras Theorem.
+\item Midpoint Theorem.
+\item Remainder Theorem.
+\item Fundamental Theorem of Arithmetic.
+\item Angle Bisector Theorem.
+\item Inscribed Angle Theorem.
+\item Ceva's Theorem.
+\item Bayes' Theorem.
+\end{itemize}
+
+\chapter{Foundation}
+\section{The Axioms of Mathematics}
+\subsection{Set Theory}
+The standard foundation of modern mathematics is set theory, or more precisely Zermelo-Fraenkel plus the Axiom of Choice (ZFC) set theory. [cite \url{https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory}]
+\begin{axiom}[Axiom of extensionality]
+  Two sets are equal if they have the same elements.
+  \[\forall x \forall y [ \forall z (z \in x \iff z \in y) \Rightarrow x = y ] \]
+\end{axiom}
+\begin{st}
+  % If two sets of dice have the same die, then they are equal.
+\end{st}
+
+\begin{axiom}[Axiom of regularity]
+  Every non-emtpy set \(x\) contains a member \(y\) such that \(x\) and \(y\) are disjoint sets.
+  \[\forall x [ \exists a ( a \in x ) \Rightarrow \exists y (y \in x \land \neg \exists z (z \in y \land z \in x)) ] \]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Axiom schema of specification]
+  In general, the subset of a set \(z\) obeying a formula \(\phi(x)\) with one free variable \(x\) may be written as \(\set{x \in z : \phi(x)}\),
+  \[\forall z \forall w_1 \forall w_2 \dots \forall w_n \exists y \forall x [x \in y \iff ((x \in z) \land \phi)]\]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Axiom of pairing]
+  If \(x\) and \(y\) are sets, then there exists a set which contains \(x\) and \(y\) as elements
+  \[\forall x \forall y \exists z ((x \in z) \land (y \in z))\]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Axiom of union]
+  The axiom of union states that for any set of sets \(\mathcal{F}\) there is a set \(A\) containing every element that is a member of some member of \(\mathcal{F}\).
+  \[\forall \mathcal{F} \exists A \forall Y \forall x [(x \in Y \land Y \in \mathcal{F}) \Rightarrow x \in A]\]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Axiom schema of replacement]
+  Let \(\phi\) be any formula in the language of \(ZFC\) whose free variables are among \(x,y,A,w_1,\dots,w_n\), so that in particular \(B\) is not free in \(\phi\). Then:
+  \[\forall A \forall w_1 \forall w_2 \dots \forall w_n [ \forall x (x \in A \Rightarrow \exists! y \phi) \Rightarrow \exists B \forall x (x \in A \Rightarrow \exists y (y \in B \land \phi)) ] \]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Axiom of infinity]
+  \[\exists X [\emptyset \in X \land \forall y (y \in X \Rightarrow S(y) \in X)]\]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Axiom of power set]
+  For any set \(x\)  , there is a set \(y\) that contains every subset of \(x\):
+  \[\forall x \exists y \forall x [ z \subseteq x \Rightarrow z \in y ] \]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\begin{axiom}[Well-ordering theorem]
+  For any set \(X\), there is  a binary relation \(R\) which well-orders \(X\). This means \(R\) is a linear order on \(X\) such that every nonempty subset of \(X\) has a member which is minimal under \(R\)
+  \[\forall X \exists R (R~\mathtt{well-orders}~X)\]
+\end{axiom}
+\begin{st}
+  
+\end{st}
+
+\subsection{Type Theory}
+
+
+
+\subsection{Category Theory}
+Formalization inside topos, build on preshealfs \(\mathbf{Sets}^{C^{op}}\)
+
+\section{Numbers}
+\begin{thm}
+  
+\end{thm}
+
+\paragraph{Proof}
+\paragraph{Story}
+
+
+
+
+\end{document}

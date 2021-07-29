@@ -1,0 +1,4 @@
+move left
+move up
+move left
+done
